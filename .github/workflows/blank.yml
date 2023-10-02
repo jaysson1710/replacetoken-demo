@@ -4,13 +4,6 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -26,17 +19,10 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Replace tokens in files
-        uses: microsoft/replace-tokens@v0
+      - uses: scott-david-walker/tokeniser@v1.0.5
         with:
-          targetFiles: |
-            **/*.yaml
-            **/*.md
-          rootDirectory: ${{ github.workspace }}
-          tokenPrefix: '#{'
-          tokenSuffix: '}#'
-          encoding: 'auto'
-          writeBOM: true
-          verbose: true
+          prefix: '#{'
+          suffix: '}#'
+          files: '**/*.md'
 
       - run: cat README.md
