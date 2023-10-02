@@ -27,4 +27,10 @@ jobs:
           CALLBACK: some_value
           var1: ${{vars.var1}}
 
+      - uses: NicoG60/simple-template-renderer@v1
+        with:
+          input: **/*.md
+          enable-log: true
+        
       - run: cat README.md
+      
