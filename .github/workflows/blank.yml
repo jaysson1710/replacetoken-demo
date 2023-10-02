@@ -24,5 +24,7 @@ jobs:
           prefix: '#{'
           suffix: '}#'
           files: '**/*.md'
+        env:
+          var1: ${{env.var1}}
 
       - run: cat README.md
