@@ -29,7 +29,7 @@ jobs:
 
       - uses: NicoG60/simple-template-renderer@v1
         with:
-          input: **/*.md
+          input: '**/*.md'
           enable-log: true
         
       - run: cat README.md
